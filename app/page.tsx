@@ -8,7 +8,7 @@ import SkillCard from '@/components/SkillCard'
 import ProgressBar from '@/components/ProgressBar'
 
 const AUTH_KEY = 'aiplus-auth'
-const CORRECT_CODE = 'AIPLUS2026'
+const CORRECT_CODE = 'AIPLUS'
 
 const sectionConfig = [
   { difficulty: 'beginner', label: '初級', emoji: '🌱', desc: '基本文字處理（關卡 1-8）' },

@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { vsCodeSkills } from '@/data/vscode-skills'
@@ -19,6 +20,10 @@ export default function VSCodeSkillPage() {
   const skillId = Number(id)
   const skill = vsCodeSkills.find(s => s.id === skillId)
   const { progress, toggleCheckItem, completeSkill } = useVSCodeProgress()
+
+  useEffect(() => {
+    if (!localStorage.getItem('aiplus-auth')) router.replace('/')
+  }, [router])
 
   if (!skill) return <div className="text-white p-10">找不到此關卡</div>
 

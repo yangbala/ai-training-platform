@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { vsCodeSkills } from '@/data/vscode-skills'
 import { useVSCodeProgress } from '@/hooks/useVSCodeProgress'
@@ -13,7 +15,12 @@ const HOUR_SECTIONS = [
 ]
 
 export default function VSCodeAgentPage() {
+  const router = useRouter()
   const { progress, completedCount, totalCount } = useVSCodeProgress()
+
+  useEffect(() => {
+    if (!localStorage.getItem('aiplus-auth')) router.replace('/')
+  }, [router])
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
