@@ -5,8 +5,8 @@ export const vsCodeSkills: Skill[] = [
     id: 1,
     title: '安裝 VS Code 與 OpenAI Codex 擴充套件',
     difficulty: 'beginner',
-    objective: '在 15 分鐘內安裝 VS Code、設定繁體中文介面，並從擴充套件市集安裝 OpenAI Codex 套件，用 ChatGPT 帳號登入。',
-    context: 'OpenAI Codex 是 VS Code 的官方擴充套件，不需要 API Key，只要有 ChatGPT 帳號就能登入使用。安裝完成後，Codex 的 AI Agent 就住在你的 VS Code 裡，可以直接讀取、修改你電腦上的檔案，處理各種行政任務。',
+    objective: '在 15 分鐘內安裝 VS Code，從擴充套件市集搜尋並安裝 Codex，再用 ChatGPT 帳號登入，完成後即可在 VS Code 裡直接使用 AI Agent。',
+    context: 'Codex 是 OpenAI 在 VS Code 擴充套件市集推出的工具，不需要輸入任何指令或安裝額外軟體，也不需要 API Key。只要在 VS Code 的擴充套件面板搜尋「Codex」安裝後，用既有的 ChatGPT 帳號登入，就能在 VS Code 裡直接對話、讓 AI 幫你讀取和處理電腦上的檔案。',
     examplePrompt: `你好！我是公司的行政人員，請告訴我你能幫我處理哪些日常辦公室工作？`,
     exampleResponse: `你好！我是 Codex，很高興認識你！我可以幫你處理許多日常行政工作，例如：
 
@@ -20,10 +20,10 @@ export const vsCodeSkills: Skill[] = [
 你有什麼任務想先試試看？`,
     task: '依照上方步驟完成安裝與登入。完成後，在 Codex 聊天面板輸入「你好，請自我介紹你能幫我做什麼？」，確認 Codex 有回應。',
     checklist: [
-      '我已安裝 VS Code 並設定為繁體中文介面',
-      '我已從擴充套件市集安裝 OpenAI 官方擴充套件',
-      '我已用 ChatGPT 帳號成功登入 Codex',
-      '我在 Codex 面板輸入問題後有收到回覆',
+      '我已安裝 VS Code 並成功開啟',
+      '我在 VS Code 擴充套件面板搜尋「Codex」並完成安裝',
+      '我用 ChatGPT 帳號登入，Codex 面板已出現在左側',
+      '我在 Codex 面板輸入一句話後有收到回覆',
     ],
   },
   {
