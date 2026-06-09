@@ -46,31 +46,31 @@ export default function SkillContent({
     <div className="space-y-8">
       {/* 學習目標 */}
       <section>
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-blue-500 mb-2">
+        <h2 className="text-sm font-semibold uppercase tracking-wider text-blue-500 mb-2">
           🎯 學習目標
         </h2>
-        <p className="text-gray-800 font-medium text-lg leading-relaxed">
+        <p className="text-gray-800 font-medium text-xl leading-relaxed">
           {skill.objective}
         </p>
       </section>
 
       {/* 情境說明 */}
       <section>
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">
+        <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">
           📖 為什麼這個技能重要
         </h2>
-        <p className="text-gray-600 leading-relaxed">{skill.context}</p>
+        <p className="text-gray-600 text-lg leading-relaxed">{skill.context}</p>
       </section>
 
       {/* 示範 Prompt */}
       <section>
         <div className="flex items-center justify-between mb-2">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500">
             💡 示範 Prompt
           </h2>
           <CopyButton text={skill.examplePrompt} />
         </div>
-        <pre className="whitespace-pre-wrap text-sm bg-gray-50 border border-gray-200 rounded-xl p-4 text-gray-700 leading-relaxed font-sans">
+        <pre className="whitespace-pre-wrap text-base bg-gray-50 border border-gray-200 rounded-xl p-4 text-gray-700 leading-relaxed font-sans">
           {skill.examplePrompt}
         </pre>
       </section>
@@ -79,13 +79,13 @@ export default function SkillContent({
       <section>
         <button
           onClick={() => setShowExample((v) => !v)}
-          className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-500 hover:text-gray-700 transition-colors"
+          className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-gray-500 hover:text-gray-700 transition-colors"
         >
           <span>✅ AI 回應範例</span>
           <span className="text-base">{showExample ? '▲' : '▼'}</span>
         </button>
         {showExample && (
-          <pre className="mt-2 whitespace-pre-wrap text-sm bg-green-50 border border-green-200 rounded-xl p-4 text-gray-700 leading-relaxed font-sans">
+          <pre className="mt-2 whitespace-pre-wrap text-base bg-green-50 border border-green-200 rounded-xl p-4 text-gray-700 leading-relaxed font-sans">
             {skill.exampleResponse}
           </pre>
         )}
@@ -93,17 +93,17 @@ export default function SkillContent({
 
       {/* 實作任務 */}
       <section>
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">
+        <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-2">
           🏋️ 實作任務
         </h2>
         <div className="bg-blue-50 border-l-4 border-blue-400 rounded-r-xl p-4">
-          <p className="text-gray-700 leading-relaxed">{skill.task}</p>
+          <p className="text-gray-700 text-lg leading-relaxed">{skill.task}</p>
         </div>
       </section>
 
       {/* 自評清單 */}
       <section>
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">
+        <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-3">
           📋 自評清單
         </h2>
         {isCompleted ? (
@@ -115,7 +115,7 @@ export default function SkillContent({
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <span className="text-sm text-gray-400 line-through leading-relaxed">{item}</span>
+                <span className="text-base text-gray-400 line-through leading-relaxed">{item}</span>
               </div>
             ))}
           </div>

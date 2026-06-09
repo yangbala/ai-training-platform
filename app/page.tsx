@@ -48,7 +48,7 @@ function LoginPage({ onLogin }: { onLogin: () => void }) {
               value={code}
               onChange={(e) => { setCode(e.target.value); setError('') }}
               placeholder="輸入驗證碼"
-              className={`w-full border-2 rounded-xl px-4 py-3 text-center text-xl tracking-[0.3em] uppercase focus:outline-none transition-all ${
+              className={`w-full border-2 rounded-xl px-4 py-3 text-center text-xl tracking-[0.3em] uppercase text-black focus:outline-none transition-all ${
                 error
                   ? 'border-red-400 focus:ring-2 focus:ring-red-300'
                   : 'border-gray-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-200'

@@ -33,7 +33,7 @@ export default function Checklist({ items, checked, onToggle }: ChecklistProps) 
             )}
           </div>
           <span
-            className={`text-sm leading-relaxed transition-colors ${
+            className={`text-base leading-relaxed transition-colors ${
               checked[i] ? 'text-gray-400 line-through' : 'text-gray-700 group-hover:text-gray-900'
             }`}
           >
