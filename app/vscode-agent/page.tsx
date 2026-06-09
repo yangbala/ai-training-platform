@@ -42,8 +42,8 @@ export default function VSCodeAgentPage() {
 
         {/* 安裝提示 */}
         <div className="bg-yellow-900/30 border border-yellow-700 rounded-lg p-4 mb-8 text-yellow-200 text-sm">
-          ⚠️ 開始前需要：VS Code（繁體中文介面）+ OpenAI API Key。
-          從關卡 1 開始，裡面有完整的安裝說明。
+          ⚠️ 開始前需要：VS Code + OpenAI Codex 擴充套件（用 ChatGPT 帳號登入，免 API Key）。
+          從關卡 1 開始，裡面有完整的安裝步驟說明。
         </div>
 
         {/* 三個時段區塊 */}

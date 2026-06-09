@@ -9,8 +9,8 @@ import SkillContent from '@/components/SkillContent'
 
 const INSTALL_REMINDER = (
   <div className="bg-yellow-900/30 border border-yellow-700 rounded-lg p-4 mb-6 text-yellow-200 text-sm">
-    ⚠️ 此關需要：已安裝 VS Code（繁體中文介面）及 OpenAI Codex CLI。
-    若尚未安裝，請先完成關卡 1。
+    ⚠️ 此關需要：已安裝 VS Code 及 OpenAI Codex 擴充套件，並用 ChatGPT 帳號登入。
+    若尚未完成，請先完成關卡 1。
   </div>
 )
 
