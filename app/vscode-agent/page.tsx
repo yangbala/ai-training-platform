@@ -45,10 +45,11 @@ export default function VSCodeAgentPage() {
             <h2 className="text-lg font-semibold text-gray-300 mb-1">{section.label}</h2>
             <p className="text-sm text-gray-500 mb-4">{section.desc}</p>
             <div className="grid gap-4">
-              {vsCodeSkills
-                .filter(s => section.ids.includes(s.id))
+              {section.ids
+                .map(id => vsCodeSkills.find(s => s.id === id))
+                .filter((s): s is typeof vsCodeSkills[0] => s !== undefined)
                 .map(skill => (
-                  <SkillCard key={skill.id} skill={skill} progress={progress[skill.id]} basePath="/vscode-agent/skill" />
+                  <SkillCard key={skill.id} skill={skill} progress={progress[skill.id] ?? { status: 'locked', checkedItems: [] }} basePath="/vscode-agent/skill" />
                 ))}
             </div>
           </section>
