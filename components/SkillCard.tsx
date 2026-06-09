@@ -5,6 +5,7 @@ import { SkillProgress } from '@/types'
 interface SkillCardProps {
   skill: Skill
   progress: SkillProgress
+  basePath?: string
 }
 
 const difficultyLabel: Record<string, string> = {
@@ -19,7 +20,7 @@ const difficultyColor: Record<string, string> = {
   advanced: 'bg-purple-100 text-purple-700',
 }
 
-export default function SkillCard({ skill, progress }: SkillCardProps) {
+export default function SkillCard({ skill, progress, basePath = '/skill' }: SkillCardProps) {
   const { status } = progress
   const isLocked = status === 'locked'
   const isCompleted = status === 'completed'
@@ -66,5 +67,5 @@ export default function SkillCard({ skill, progress }: SkillCardProps) {
 
   if (isLocked) return content
 
-  return <Link href={`/skill/${skill.id}`}>{content}</Link>
+  return <Link href={`${basePath}/${skill.id}`}>{content}</Link>
 }

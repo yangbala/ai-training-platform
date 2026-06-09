@@ -48,7 +48,7 @@ export default function VSCodeAgentPage() {
               {vsCodeSkills
                 .filter(s => section.ids.includes(s.id))
                 .map(skill => (
-                  <SkillCard key={skill.id} skill={skill} progress={progress[skill.id]} />
+                  <SkillCard key={skill.id} skill={skill} progress={progress[skill.id]} basePath="/vscode-agent/skill" />
                 ))}
             </div>
           </section>
