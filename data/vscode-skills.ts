@@ -31,7 +31,7 @@ export const vsCodeSkills: Skill[] = [
     title: '認識 Codex 三種模式',
     difficulty: 'beginner',
     objective: '了解 Codex 的 Chat、Agent、Agent Full Access 三種模式的差異，並用 Agent 模式完成第一個真實任務。',
-    context: 'Codex 在 VS Code 裡有三種操作模式，對應不同的工作場景：\n\n• Chat（對話模式）：純聊天，不會動到你的任何檔案。適合詢問問題、想法討論。\n\n• Agent（代理人模式，預設）：AI 可以讀取和修改檔案，但在執行外部操作前會先詢問你的同意。這是最常用的模式。\n\n• Agent Full Access（完全自動模式）：AI 全自動執行，不會中途問你。適合熟悉工具後的批次作業。\n\n一般行政任務建議使用 Agent 模式，讓 AI 幫你完成工作，同時保有控制權。',
+    context: 'Codex 提供三種模式，適用不同情境。日常行政任務建議從 Agent 模式開始，讓 AI 幫你完成工作，同時保有確認控制權。',
     examplePrompt: `在 Codex 面板右上角切換到「Agent」模式後，輸入：
 
 請在我目前開啟的資料夾中，建立一個名為「我的第一個Codex任務.txt」的檔案，

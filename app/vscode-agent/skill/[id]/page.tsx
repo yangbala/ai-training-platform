@@ -55,6 +55,73 @@ const INSTALL_STEPS = [
   },
 ]
 
+const THREE_MODES = [
+  {
+    icon: '💬',
+    name: 'Chat',
+    label: '對話模式',
+    desc: '純聊天，不會讀取或修改你的任何檔案。',
+    useCases: ['詢問 AI 問題', '討論想法與策略'],
+    badge: null,
+    color: 'border-gray-200 bg-white',
+    badgeColor: '',
+  },
+  {
+    icon: '🤖',
+    name: 'Agent',
+    label: '代理人模式',
+    desc: 'AI 可以讀取和修改檔案，在執行外部操作前會先詢問你的同意。',
+    useCases: ['日常行政任務', '資料整理與搜尋', '產生摘要文件'],
+    badge: '預設・推薦',
+    color: 'border-blue-300 bg-blue-50',
+    badgeColor: 'bg-blue-600 text-white',
+  },
+  {
+    icon: '⚡',
+    name: 'Agent Full Access',
+    label: '完全自動模式',
+    desc: 'AI 全自動執行所有操作，不會中途詢問確認。',
+    useCases: ['批次自動化作業', '熟悉工具後使用'],
+    badge: '進階',
+    color: 'border-orange-200 bg-orange-50',
+    badgeColor: 'bg-orange-500 text-white',
+  },
+]
+
+function ThreeModesGuide() {
+  return (
+    <div className="mb-8">
+      <h2 className="text-sm font-semibold uppercase tracking-wider text-blue-500 mb-4">
+        🎛️ 三種模式比較
+      </h2>
+      <div className="space-y-3">
+        {THREE_MODES.map(({ icon, name, label, desc, useCases, badge, color, badgeColor }) => (
+          <div key={name} className={`border-2 rounded-xl p-4 ${color}`}>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-xl">{icon}</span>
+              <span className="font-bold text-gray-900">{name}</span>
+              <span className="text-sm text-gray-500">（{label}）</span>
+              {badge && (
+                <span className={`ml-auto text-xs font-semibold px-2 py-0.5 rounded-full ${badgeColor}`}>
+                  {badge}
+                </span>
+              )}
+            </div>
+            <p className="text-sm text-gray-600 mb-2 pl-8">{desc}</p>
+            <div className="flex flex-wrap gap-2 pl-8">
+              {useCases.map(u => (
+                <span key={u} className="text-xs bg-white border border-gray-200 text-gray-600 px-2.5 py-1 rounded-full">
+                  ✓ {u}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function InstallGuide() {
   return (
     <div className="mb-8">
@@ -202,7 +269,11 @@ export default function VSCodeSkillPage() {
           status={skillProgress.status}
           onToggle={(index) => toggleCheckItem(skillId, index)}
           onComplete={handleComplete}
-          afterContext={skillId === 1 ? <InstallGuide /> : undefined}
+          afterContext={
+            skillId === 1 ? <InstallGuide /> :
+            skillId === 2 ? <ThreeModesGuide /> :
+            undefined
+          }
         />
 
         {/* Back to map */}
