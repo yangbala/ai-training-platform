@@ -35,7 +35,7 @@ const INSTALL_STEPS = [
     icon: '🔑',
     title: '用 ChatGPT 帳號登入',
     steps: [
-      '安裝完成後，左側活動列出現 Codex 圖示',
+      '安裝完成後，右側活動列出現 Codex 圖示',
       '點擊 Codex 圖示開啟面板',
       '點擊「Sign in with ChatGPT」',
       '瀏覽器跳出 OpenAI 授權頁面，登入 ChatGPT 帳號後點允許',
