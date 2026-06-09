@@ -23,46 +23,68 @@ export default function VSCodeAgentPage() {
   }, [router])
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
-      <div className="max-w-4xl mx-auto px-4 py-10">
-
-        {/* 標題區 */}
-        <div className="mb-8">
-          <Link href="/" className="text-gray-400 text-sm hover:text-white mb-4 inline-block">
-            ← 返回首頁
-          </Link>
-          <h1 className="text-3xl font-bold mb-2">VS Code Codex Agent 實戰</h1>
-          <p className="text-gray-400">學會用 AI Agent 處理日常行政工作，3 小時從安裝到實戰</p>
-        </div>
-
-        {/* 整體進度 */}
-        <div className="mb-10">
+    <main className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
+        <div className="max-w-4xl mx-auto px-4 py-4">
+          <div className="flex items-center justify-between mb-3">
+            <div>
+              <div className="flex items-center gap-2 mb-0.5">
+                <Link href="/" className="text-sm text-gray-500 hover:text-gray-800 transition-colors">
+                  ← 返回首頁
+                </Link>
+              </div>
+              <h1 className="text-xl font-bold text-gray-900">
+                💻 VS Code Codex Agent 實戰
+              </h1>
+              <p className="text-sm text-gray-500 mt-0.5">
+                3 小時學會用 AI Agent 處理日常行政工作
+              </p>
+            </div>
+          </div>
           <ProgressBar completed={completedCount} total={totalCount} />
         </div>
+      </header>
+
+      {/* Content */}
+      <div className="max-w-4xl mx-auto px-4 py-8 space-y-10">
 
         {/* 安裝提示 */}
-        <div className="bg-yellow-900/30 border border-yellow-700 rounded-lg p-4 mb-8 text-yellow-200 text-sm">
+        <div className="bg-yellow-50 border border-yellow-300 rounded-xl p-4 text-yellow-800 text-sm">
           ⚠️ 開始前需要：VS Code + OpenAI Codex 擴充套件（用 ChatGPT 帳號登入，免 API Key）。
           從關卡 1 開始，裡面有完整的安裝步驟說明。
         </div>
 
         {/* 三個時段區塊 */}
         {HOUR_SECTIONS.map(section => (
-          <section key={section.label} className="mb-10">
-            <h2 className="text-lg font-semibold text-gray-300 mb-1">{section.label}</h2>
-            <p className="text-sm text-gray-500 mb-4">{section.desc}</p>
-            <div className="grid gap-4">
+          <section key={section.label}>
+            <div className="flex items-center gap-2 mb-4">
+              <div>
+                <h2 className="text-base font-bold text-gray-800">{section.label}</h2>
+                <p className="text-sm text-gray-500">{section.desc}</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
               {section.ids
                 .map(id => vsCodeSkills.find(s => s.id === id))
                 .filter((s): s is typeof vsCodeSkills[0] => s !== undefined)
                 .map(skill => (
-                  <SkillCard key={skill.id} skill={skill} progress={progress[skill.id] ?? { status: 'locked', checkedItems: [] }} basePath="/vscode-agent/skill" />
+                  <SkillCard
+                    key={skill.id}
+                    skill={skill}
+                    progress={progress[skill.id] ?? { status: 'locked', checkedItems: [] }}
+                    basePath="/vscode-agent/skill"
+                  />
                 ))}
             </div>
           </section>
         ))}
-
       </div>
-    </div>
+
+      {/* Footer */}
+      <footer className="text-center py-8 text-xs text-gray-400">
+        完成全部 10 個關卡，成為 AI 行政自動化達人！
+      </footer>
+    </main>
   )
 }
