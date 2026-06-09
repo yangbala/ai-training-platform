@@ -127,7 +127,7 @@ function SkillPlatform({ onLogout }: { onLogout: () => void }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
           <div className="bg-gray-800 rounded-xl p-5 border border-gray-700">
             <div className="text-xs text-blue-400 font-semibold mb-1 uppercase tracking-wide">經典路線</div>
-            <h3 className="text-lg font-bold mb-1">AI 行政技能 30 關挑戰</h3>
+            <h3 className="text-lg font-bold mb-1">AI 行政技能 31 關挑戰</h3>
             <p className="text-gray-400 text-sm mb-4">用 ChatGPT / Claude 處理日常辦公任務</p>
             <a href="#skills" className="inline-block bg-blue-600 hover:bg-blue-500 text-white text-sm px-4 py-2 rounded-lg">
               繼續挑戰 →
