@@ -41,7 +41,7 @@ export default function VSCodeSkillPage() {
     )
   }
 
-  const allChecked = skillProgress?.checkedItems.every(Boolean)
+  if (!skillProgress) return null
 
   const handleComplete = () => {
     completeSkill(skillId)
@@ -62,8 +62,8 @@ export default function VSCodeSkillPage() {
 
         <SkillContent
           skill={skill}
-          checked={skillProgress?.checkedItems ?? []}
-          status={skillProgress?.status ?? 'unlocked'}
+          checked={skillProgress.checkedItems}
+          status={skillProgress.status}
           onToggle={(index) => toggleCheckItem(skillId, index)}
           onComplete={handleComplete}
         />
@@ -74,12 +74,6 @@ export default function VSCodeSkillPage() {
             <Link href={`/vscode-agent/skill/${skillId - 1}`}
               className="text-gray-400 hover:text-white text-sm">
               ← 上一關
-            </Link>
-          )}
-          {skillId < vsCodeSkills.length && allChecked && (
-            <Link href={`/vscode-agent/skill/${skillId + 1}`}
-              className="text-blue-400 hover:text-blue-300 text-sm ml-auto">
-              下一關 →
             </Link>
           )}
         </div>
