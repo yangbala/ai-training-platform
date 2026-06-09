@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { skills } from '@/data/skills'
 import { useProgress } from '@/hooks/useProgress'
 import SkillCard from '@/components/SkillCard'
@@ -122,6 +123,26 @@ function SkillPlatform({ onLogout }: { onLogout: () => void }) {
 
       {/* Content */}
       <div className="max-w-5xl mx-auto px-4 py-8 space-y-12">
+        {/* 雙學習路徑入口 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+          <div className="bg-gray-800 rounded-xl p-5 border border-gray-700">
+            <div className="text-xs text-blue-400 font-semibold mb-1 uppercase tracking-wide">經典路線</div>
+            <h3 className="text-lg font-bold mb-1">AI 行政技能 30 關挑戰</h3>
+            <p className="text-gray-400 text-sm mb-4">用 ChatGPT / Claude 處理日常辦公任務</p>
+            <a href="#skills" className="inline-block bg-blue-600 hover:bg-blue-500 text-white text-sm px-4 py-2 rounded-lg">
+              繼續挑戰 →
+            </a>
+          </div>
+          <div className="bg-gray-800 rounded-xl p-5 border border-purple-700">
+            <div className="text-xs text-purple-400 font-semibold mb-1 uppercase tracking-wide">新路線</div>
+            <h3 className="text-lg font-bold mb-1">VS Code Codex Agent 實戰</h3>
+            <p className="text-gray-400 text-sm mb-4">3 小時學會用 AI Agent 處理批次行政任務</p>
+            <Link href="/vscode-agent" className="inline-block bg-purple-600 hover:bg-purple-500 text-white text-sm px-4 py-2 rounded-lg">
+              進入模組 →
+            </Link>
+          </div>
+        </div>
+        <div id="skills" />
         {sectionConfig.map(({ difficulty, label, emoji, desc }) => {
           const sectionSkills = skills.filter((s) => s.difficulty === difficulty)
           return (
