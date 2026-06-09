@@ -10,6 +10,7 @@ interface SkillContentProps {
   status: 'unlocked' | 'completed'
   onToggle: (index: number) => void
   onComplete: () => void
+  afterContext?: React.ReactNode
 }
 
 function CopyButton({ text }: { text: string }) {
@@ -37,6 +38,7 @@ export default function SkillContent({
   status,
   onToggle,
   onComplete,
+  afterContext,
 }: SkillContentProps) {
   const [showExample, setShowExample] = useState(false)
   const allChecked = checked.every(Boolean)
@@ -61,6 +63,8 @@ export default function SkillContent({
         </h2>
         <p className="text-gray-600 text-lg leading-relaxed">{skill.context}</p>
       </section>
+
+      {afterContext}
 
       {/* 示範 Prompt */}
       <section>

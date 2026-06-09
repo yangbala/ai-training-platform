@@ -196,14 +196,13 @@ export default function VSCodeSkillPage() {
           <h1 className="text-2xl font-bold text-gray-900">{skill.title}</h1>
         </div>
 
-        {skillId === 1 && <InstallGuide />}
-
         <SkillContent
           skill={skill}
           checked={skillProgress.checkedItems}
           status={skillProgress.status}
           onToggle={(index) => toggleCheckItem(skillId, index)}
           onComplete={handleComplete}
+          afterContext={skillId === 1 ? <InstallGuide /> : undefined}
         />
 
         {/* Back to map */}
