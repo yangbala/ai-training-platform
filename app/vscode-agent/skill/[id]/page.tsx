@@ -23,6 +23,24 @@ export default function VSCodeSkillPage() {
   if (!skill) return <div className="text-white p-10">找不到此關卡</div>
 
   const skillProgress = progress[skillId]
+
+  if (skillProgress?.status === 'locked') {
+    return (
+      <div className="min-h-screen bg-gray-950 text-white">
+        <div className="max-w-3xl mx-auto px-4 py-10">
+          <Link href="/vscode-agent" className="text-gray-400 text-sm hover:text-white mb-6 inline-block">
+            ← 返回模組首頁
+          </Link>
+          <div className="bg-gray-800 rounded-xl p-8 text-center">
+            <div className="text-4xl mb-4">🔒</div>
+            <h2 className="text-xl font-bold mb-2">此關卡尚未解鎖</h2>
+            <p className="text-gray-400 text-sm">請先完成上一個關卡，才能解鎖此關。</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   const allChecked = skillProgress?.checkedItems.every(Boolean)
 
   const handleComplete = () => {
@@ -31,8 +49,6 @@ export default function VSCodeSkillPage() {
     if (next) router.push(`/vscode-agent/skill/${next.id}`)
     else router.push('/vscode-agent')
   }
-
-  const displayStatus = skillProgress?.status === 'locked' ? 'unlocked' : (skillProgress?.status ?? 'unlocked')
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
@@ -47,7 +63,7 @@ export default function VSCodeSkillPage() {
         <SkillContent
           skill={skill}
           checked={skillProgress?.checkedItems ?? []}
-          status={displayStatus}
+          status={skillProgress?.status ?? 'unlocked'}
           onToggle={(index) => toggleCheckItem(skillId, index)}
           onComplete={handleComplete}
         />
