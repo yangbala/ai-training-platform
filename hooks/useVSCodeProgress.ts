@@ -18,15 +18,14 @@ function buildInitial(): ProgressMap {
 }
 
 export function useVSCodeProgress() {
-  const [progress, setProgress] = useState<ProgressMap>(() => {
-    if (typeof window === 'undefined') return buildInitial()
+  const [progress, setProgress] = useState<ProgressMap>(buildInitial)
+
+  useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY)
-      return stored ? JSON.parse(stored) : buildInitial()
-    } catch {
-      return buildInitial()
-    }
-  })
+      if (stored) setProgress(JSON.parse(stored))
+    } catch { /* keep initial */ }
+  }, [])
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(progress))
@@ -35,6 +34,7 @@ export function useVSCodeProgress() {
   const toggleCheckItem = useCallback((skillId: number, index: number) => {
     setProgress(prev => {
       const current = prev[skillId]
+      if (!current || current.status === 'locked') return prev
       const checkedItems = [...current.checkedItems]
       checkedItems[index] = !checkedItems[index]
       return { ...prev, [skillId]: { ...current, checkedItems } }
@@ -43,6 +43,7 @@ export function useVSCodeProgress() {
 
   const completeSkill = useCallback((skillId: number) => {
     setProgress(prev => {
+      if (!prev[skillId] || prev[skillId].status !== 'unlocked') return prev
       const updated = { ...prev, [skillId]: { ...prev[skillId], status: 'completed' as const } }
       const nextSkill = vsCodeSkills.find(s => s.id === skillId + 1)
       if (nextSkill && updated[nextSkill.id]?.status === 'locked') {
