@@ -7,12 +7,100 @@ import { vsCodeSkills } from '@/data/vscode-skills'
 import { useVSCodeProgress } from '@/hooks/useVSCodeProgress'
 import SkillContent from '@/components/SkillContent'
 
-const INSTALL_REMINDER = (
-  <div className="bg-yellow-50 border border-yellow-300 rounded-xl p-4 mb-6 text-yellow-800 text-sm">
-    ⚠️ 此關需要：已安裝 VS Code 及 OpenAI Codex 擴充套件，並用 ChatGPT 帳號登入。
-    若尚未完成，請先完成關卡 1。
+const INSTALL_STEPS = [
+  {
+    num: 1,
+    icon: '💻',
+    title: '下載並安裝 VS Code',
+    steps: [
+      '前往 code.visualstudio.com',
+      '點擊「Download for Windows」下載安裝檔',
+      '執行安裝程式，一路點「下一步」完成安裝',
+    ],
+  },
+  {
+    num: 2,
+    icon: '🌐',
+    title: '設定繁體中文介面',
+    steps: [
+      '開啟 VS Code，按 Ctrl + Shift + P',
+      '在命令面板輸入「Configure Display Language」',
+      '從清單選擇「zh-tw（中文（繁體））」',
+      '點擊「重新啟動」讓語言生效',
+    ],
+  },
+  {
+    num: 3,
+    icon: '🔌',
+    title: '安裝 OpenAI Codex 擴充套件',
+    steps: [
+      '點擊左側欄位的「擴充套件」圖示（四個方塊）',
+      '在搜尋欄輸入「OpenAI」',
+      '找到帶有黑底白色 OpenAI logo 的官方套件',
+      '點擊「安裝」按鈕',
+    ],
+  },
+  {
+    num: 4,
+    icon: '🔑',
+    title: '用 ChatGPT 帳號登入',
+    steps: [
+      '安裝完成後，左側會出現 Codex 圖示',
+      '點擊 Codex 圖示，選擇「Sign in with ChatGPT」',
+      '瀏覽器會跳出 OpenAI 的授權頁面，登入你的 ChatGPT 帳號',
+      '授權完成後回到 VS Code，即可看到 Codex 聊天面板',
+    ],
+  },
+]
+
+const WSL_NOTE = (
+  <div className="mt-6 bg-amber-50 border border-amber-300 rounded-xl p-4">
+    <div className="flex items-start gap-3">
+      <span className="text-xl mt-0.5">⚠️</span>
+      <div>
+        <p className="font-semibold text-amber-800 mb-1">Windows 用戶額外步驟：安裝 WSL</p>
+        <p className="text-amber-700 text-sm leading-relaxed">
+          在 Windows 上使用 Codex 的 Agent 模式（讓 AI 直接操作檔案）需要先安裝
+          <strong> WSL（Windows Subsystem for Linux）</strong>。<br />
+          安裝方法：按 <code className="bg-amber-100 px-1.5 py-0.5 rounded text-xs font-mono">Ctrl + Shift + P</code>，
+          輸入「<strong>WSL: Install</strong>」並執行，整個過程約 5-10 分鐘。
+        </p>
+      </div>
+    </div>
   </div>
 )
+
+function InstallGuide() {
+  return (
+    <div className="mb-8">
+      <h2 className="text-sm font-semibold uppercase tracking-wider text-blue-500 mb-4">
+        🛠️ 安裝步驟
+      </h2>
+      <div className="space-y-3">
+        {INSTALL_STEPS.map(({ num, icon, title, steps }) => (
+          <div key={num} className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-7 h-7 rounded-full bg-blue-600 text-white text-xs font-bold flex items-center justify-center flex-shrink-0">
+                {num}
+              </div>
+              <span className="text-lg">{icon}</span>
+              <h3 className="font-semibold text-gray-800">{title}</h3>
+            </div>
+            <ul className="space-y-1.5 pl-10">
+              {steps.map((s, i) => (
+                <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
+                  <span className="text-blue-400 mt-0.5 flex-shrink-0">→</span>
+                  <span>{s}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      {WSL_NOTE}
+    </div>
+  )
+}
 
 const difficultyLabel: Record<string, string> = {
   beginner: '初級',
@@ -124,7 +212,7 @@ export default function VSCodeSkillPage() {
           <h1 className="text-2xl font-bold text-gray-900">{skill.title}</h1>
         </div>
 
-        {skillId <= 2 && INSTALL_REMINDER}
+        {skillId === 1 && <InstallGuide />}
 
         <SkillContent
           skill={skill}

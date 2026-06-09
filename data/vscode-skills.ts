@@ -7,35 +7,17 @@ export const vsCodeSkills: Skill[] = [
     difficulty: 'beginner',
     objective: '在 15 分鐘內安裝 VS Code、設定繁體中文介面，並從擴充套件市集安裝 OpenAI Codex 套件，用 ChatGPT 帳號登入。',
     context: 'OpenAI Codex 是 VS Code 的官方擴充套件，不需要 API Key，只要有 ChatGPT 帳號就能登入使用。安裝完成後，Codex 的 AI Agent 就住在你的 VS Code 裡，可以直接讀取、修改你電腦上的檔案，處理各種行政任務。\n\n⚠️ Windows 用戶注意：使用 Agent 模式（讓 AI 直接操作檔案）需要先安裝 WSL（Windows Subsystem for Linux）。安裝完 VS Code 後，請按 Ctrl+Shift+P，輸入「WSL: Install」來安裝，整個過程約 5-10 分鐘。',
-    examplePrompt: `【安裝步驟說明】
+    examplePrompt: `你好！我是公司的行政人員，請告訴我你能幫我處理哪些日常辦公室工作？`,
+    exampleResponse: `你好！我是 Codex，很高興認識你！我可以幫你處理許多日常行政工作，例如：
 
-步驟 1：下載並安裝 VS Code
-  → 前往 code.visualstudio.com，點擊「Download for Windows」
-  → 安裝完成後開啟 VS Code
+📊 資料整理：讀取 Excel / CSV，清理格式不一致的欄位，統一日期、電話格式。
+📄 文件摘要：讀取 Word、PDF、TXT，快速提取重點條列。
+🔍 跨檔搜尋：在多個資料夾中搜尋包含特定關鍵字的段落。
+📋 報告彙整：把多份週報的結論段落自動合併成一份摘要文件。
+🗂️ 批次命名：依照日期或規則批次重新命名照片或掃描文件。
+📁 資料夾整理：依副檔名自動分類，把混亂的資料夾整理乾淨。
 
-步驟 2：設定繁體中文介面
-  → 按 Ctrl+Shift+P 開啟命令面板
-  → 輸入「Configure Display Language」
-  → 選擇「zh-tw（中文繁體）」
-  → 重新啟動 VS Code
-
-步驟 3：安裝 OpenAI Codex 擴充套件
-  → 點擊左側「擴充套件」圖示（四個方塊）
-  → 在搜尋欄輸入「OpenAI」
-  → 找到 OpenAI 官方擴充套件（圖示為黑色背景白色 OpenAI logo）
-  → 點擊「安裝」
-
-步驟 4：用 ChatGPT 帳號登入
-  → 安裝完成後，左側會出現 Codex 圖示
-  → 點擊 Codex 圖示，選擇「Sign in with ChatGPT」
-  → 瀏覽器會開啟 OpenAI 的授權頁面，登入你的 ChatGPT 帳號
-  → 授權完成後回到 VS Code，即可看到 Codex 聊天面板`,
-    exampleResponse: `登入成功後，Codex 面板會顯示：
-
-歡迎使用 Codex！
-已連接到你的 ChatGPT 帳號：your.email@example.com
-
-你現在可以在對話框輸入任何任務指令。`,
+你有什麼任務想先試試看？`,
     task: '依照上方步驟完成安裝與登入。完成後，在 Codex 聊天面板輸入「你好，請自我介紹你能幫我做什麼？」，確認 Codex 有回應。',
     checklist: [
       '我已安裝 VS Code 並設定為繁體中文介面',
