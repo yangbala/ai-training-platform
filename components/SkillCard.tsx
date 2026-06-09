@@ -40,26 +40,26 @@ export default function SkillCard({ skill, progress }: SkillCardProps) {
       </div>
 
       {/* Skill number */}
-      <span className="text-xs text-gray-400 font-medium">關卡 {skill.id}</span>
+      <span className="text-sm text-gray-400 font-medium">關卡 {skill.id}</span>
 
       {/* Title */}
-      <h3 className="text-sm font-semibold text-gray-800 leading-snug pr-6">
+      <h3 className="text-base font-semibold text-gray-800 leading-snug pr-6">
         {skill.title}
       </h3>
 
       {/* Difficulty badge */}
       <span
-        className={`self-start text-xs font-medium px-2 py-0.5 rounded-full ${difficultyColor[skill.difficulty]}`}
+        className={`self-start text-sm font-medium px-2 py-0.5 rounded-full ${difficultyColor[skill.difficulty]}`}
       >
         {difficultyLabel[skill.difficulty]}
       </span>
 
       {/* Checklist progress for unlocked */}
       {!isLocked && !isCompleted && (
-        <p className="text-xs text-blue-500 mt-1">點擊開始學習 →</p>
+        <p className="text-sm text-blue-500 mt-1">點擊開始學習 →</p>
       )}
       {isCompleted && (
-        <p className="text-xs text-green-600 mt-1 font-medium">已完成</p>
+        <p className="text-sm text-green-600 mt-1 font-medium">已完成</p>
       )}
     </div>
   )

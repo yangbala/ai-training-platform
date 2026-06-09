@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI 行政技能 30 關挑戰",
+  title: "AI 行政技能 31 關挑戰",
   description: "學會 AI 工具，讓每天的辦公室工作更輕鬆",
 };
 

@@ -8,7 +8,7 @@ import ProgressBar from '@/components/ProgressBar'
 const sectionConfig = [
   { difficulty: 'beginner', label: '初級', emoji: '🌱', desc: '基本文字處理（關卡 1-8）' },
   { difficulty: 'intermediate', label: '中級', emoji: '📋', desc: '文件製作與資料整理（關卡 9-20）' },
-  { difficulty: 'advanced', label: '進階', emoji: '🚀', desc: '策略、創作與系統化應用（關卡 21-30）' },
+  { difficulty: 'advanced', label: '進階', emoji: '🚀', desc: '策略、創作與系統化應用（關卡 21-31）' },
 ]
 
 export default function HomePage() {
@@ -22,7 +22,7 @@ export default function HomePage() {
           <div className="flex items-center justify-between mb-3">
             <div>
               <h1 className="text-xl font-bold text-gray-900">
-                🤖 AI 行政技能 30 關挑戰
+                🤖 AI 行政技能 31 關挑戰
               </h1>
               <p className="text-sm text-gray-500 mt-0.5">
                 學會 AI 工具，讓每天的辦公室工作更輕鬆
@@ -72,7 +72,7 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer className="text-center py-8 text-xs text-gray-400">
-        完成所有 30 個關卡，成為 AI 行政達人！
+        完成所有 31 個關卡，成為 AI 行政達人！
       </footer>
     </main>
   )

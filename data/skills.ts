@@ -1313,4 +1313,78 @@ ERP系統升級專案目前進展符合預期，整體完成度約40%。需求�
       '我完成了所有30個關卡的挑戰！',
     ],
   },
+  {
+    id: 31,
+    title: '用 AI 批次製作活動識別證',
+    difficulty: 'advanced',
+    objective: '學會用 AI（Codex）自動讀取名單 CSV，批次產出每位參加者的活動識別證 PNG，不需要設計師也能快速完成大量製作',
+    context: '辦活動時手動製作識別證既費時又容易出錯。只要準備好名單 CSV 和一張底圖，Codex 就能幫你一次輸出所有人的識別證，每張自動帶入姓名、公司、職稱，輸出印刷規格 PNG，大幅縮短製作時間。',
+    examplePrompt: `我要批次製作活動識別證，請幫我：
+1. 讀取 attendees.csv（欄位：姓名、公司、職稱、編號）
+2. 套用 badge_bg.png 作為底圖（尺寸 709×1075 px，對應實體 60×91mm）
+3. 姓名置中、字型大小 48pt；公司與職稱放置在姓名下方、字型大小 28pt
+4. 每筆資料輸出一張 PNG，檔名格式為「姓名_編號.png」
+5. 確保支援繁體中文，請使用系統中文字型（如 NotoSansCJK 或 PingFang TC）
+6. 先用前 5 筆資料測試，確認排版無誤後再批次輸出全部
+
+底圖備注：底圖已留白供文字區域，請勿在圖上額外繪製框線。`,
+    exampleResponse: `我來幫你撰寫這段 Python 批次製作識別證的程式碼：
+
+\`\`\`python
+from PIL import Image, ImageDraw, ImageFont
+import csv, os
+
+# 設定路徑
+bg_path = "badge_bg.png"
+csv_path = "attendees.csv"
+output_dir = "badges_output"
+os.makedirs(output_dir, exist_ok=True)
+
+# 載入字型（繁體中文）
+font_name = ImageFont.truetype("NotoSansCJK-Bold.ttc", 48)
+font_sub  = ImageFont.truetype("NotoSansCJK-Regular.ttc", 28)
+
+with open(csv_path, newline='', encoding='utf-8') as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        name    = row['姓名']
+        company = row['公司']
+        title   = row['職稱']
+        num     = row['編號']
+
+        img  = Image.open(bg_path).copy()
+        draw = ImageDraw.Draw(img)
+        W, H = img.size
+
+        # 姓名置中（垂直中間偏上）
+        bbox = draw.textbbox((0,0), name, font=font_name)
+        tw = bbox[2] - bbox[0]
+        draw.text(((W-tw)//2, int(H*0.45)), name, font=font_name, fill="#1a1a1a")
+
+        # 公司 + 職稱（姓名下方）
+        sub_text = f"{company}  {title}"
+        bbox2 = draw.textbbox((0,0), sub_text, font=font_sub)
+        tw2 = bbox2[2] - bbox2[0]
+        draw.text(((W-tw2)//2, int(H*0.55)), sub_text, font=font_sub, fill="#444444")
+
+        out_name = f"{name}_{num}.png"
+        img.save(os.path.join(output_dir, out_name))
+        print(f"已輸出：{out_name}")
+
+print("全部完成！")
+\`\`\`
+
+說明：
+• 前 5 筆測試：先在 CSV 只保留 5 筆，確認中文顯示、間距、位置正確後，再用完整名單執行
+• 字型路徑：若找不到 NotoSansCJK，可改用 "/System/Library/Fonts/PingFang.ttc"（Mac）
+• 送印 PDF：確認排版無誤後，再告知印刷廠成品尺寸（60×91mm）、出血 3mm，由 Codex 加裝裁切線後輸出 PDF`,
+    task: '準備一份至少 5 筆的活動報名名單（欄位：姓名、公司、職稱、編號），以及一張識別證底圖（可用 AI 生圖或自行設計，尺寸 709×1075 px）。將上方 Prompt 貼入 ChatGPT Codex 或 Claude，讓 AI 幫你產出批次製作程式，執行後確認每張識別證排版正確。',
+    checklist: [
+      '我已準備好 CSV 名單（含姓名、公司、職稱、編號欄位）',
+      '我已準備好識別證底圖（已留白供文字放置）',
+      '我成功用前 5 筆測試，確認中文顯示與排版無誤',
+      '我成功批次輸出全部識別證 PNG，檔名格式正確',
+      '我了解如何向印刷廠提供出血與裁切線規格',
+    ],
+  },
 ]
