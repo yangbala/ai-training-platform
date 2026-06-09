@@ -6,7 +6,7 @@ export const vsCodeSkills: Skill[] = [
     title: '安裝 VS Code 與 OpenAI Codex 擴充套件',
     difficulty: 'beginner',
     objective: '在 15 分鐘內安裝 VS Code、設定繁體中文介面，並從擴充套件市集安裝 OpenAI Codex 套件，用 ChatGPT 帳號登入。',
-    context: 'OpenAI Codex 是 VS Code 的官方擴充套件，不需要 API Key，只要有 ChatGPT 帳號就能登入使用。安裝完成後，Codex 的 AI Agent 就住在你的 VS Code 裡，可以直接讀取、修改你電腦上的檔案，處理各種行政任務。\n\n⚠️ Windows 用戶注意：使用 Agent 模式（讓 AI 直接操作檔案）需要先安裝 WSL（Windows Subsystem for Linux）。安裝完 VS Code 後，請按 Ctrl+Shift+P，輸入「WSL: Install」來安裝，整個過程約 5-10 分鐘。',
+    context: 'OpenAI Codex 是 VS Code 的官方擴充套件，不需要 API Key，只要有 ChatGPT 帳號就能登入使用。安裝完成後，Codex 的 AI Agent 就住在你的 VS Code 裡，可以直接讀取、修改你電腦上的檔案，處理各種行政任務。',
     examplePrompt: `你好！我是公司的行政人員，請告訴我你能幫我處理哪些日常辦公室工作？`,
     exampleResponse: `你好！我是 Codex，很高興認識你！我可以幫你處理許多日常行政工作，例如：
 

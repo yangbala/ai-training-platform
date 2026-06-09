@@ -53,23 +53,6 @@ const INSTALL_STEPS = [
   },
 ]
 
-const WSL_NOTE = (
-  <div className="mt-6 bg-amber-50 border border-amber-300 rounded-xl p-4">
-    <div className="flex items-start gap-3">
-      <span className="text-xl mt-0.5">⚠️</span>
-      <div>
-        <p className="font-semibold text-amber-800 mb-1">Windows 用戶額外步驟：安裝 WSL</p>
-        <p className="text-amber-700 text-sm leading-relaxed">
-          在 Windows 上使用 Codex 的 Agent 模式（讓 AI 直接操作檔案）需要先安裝
-          <strong> WSL（Windows Subsystem for Linux）</strong>。<br />
-          安裝方法：按 <code className="bg-amber-100 px-1.5 py-0.5 rounded text-xs font-mono">Ctrl + Shift + P</code>，
-          輸入「<strong>WSL: Install</strong>」並執行，整個過程約 5-10 分鐘。
-        </p>
-      </div>
-    </div>
-  </div>
-)
-
 function InstallGuide() {
   return (
     <div className="mb-8">
@@ -97,7 +80,6 @@ function InstallGuide() {
           </div>
         ))}
       </div>
-      {WSL_NOTE}
     </div>
   )
 }
