@@ -128,26 +128,26 @@ export const vsCodeSkills: Skill[] = [
     id: 5,
     title: '讓 Codex 整理 Excel 欄位格式',
     difficulty: 'intermediate',
-    objective: '從政府採購網下載機械設備決標 Excel，讓 Codex 自動清除空白、統一電話與日期格式，並輸出整理後的新檔案。',
-    context: '政府採購網（tender.gov.tw）公開所有機關採購決標資料，可直接下載 Excel。這類資料常見格式問題：廠商電話格式不一（有的有區碼、有的沒有）、決標日期民國／西元混用、廠商名稱前後有多餘空白。以前要一格一格手動修，現在交給 Codex 幾秒鐘搞定，原始檔不會被動到。',
-    examplePrompt: `請讀取 procurement_award.xlsx，幫我做以下整理：
-1. 把「廠商名稱」欄位的前後多餘空白去掉
-2. 把「電話」欄位統一格式為 0X-XXXX-XXXX 或 09XX-XXX-XXX
-3. 把「決標日期」欄位統一格式為 YYYY/MM/DD（民國年請轉換為西元年）
-完成後輸出為 procurement_award_cleaned.xlsx 存在同一資料夾。`,
-    exampleResponse: `✓ 已處理 procurement_award.xlsx（共 238 筆）
+    objective: '從政府資料開放平臺下載機械業工廠登記 Excel，讓 Codex 自動清除空白、統一電話與日期格式，並輸出整理後的新檔案。',
+    context: '政府資料開放平臺（data.gov.tw）公開各縣市工廠登記名冊，可直接下載 Excel，內含工廠名稱、負責人、電話、地址、核准日期等欄位。這類資料常見格式問題：電話格式不一（有的有區碼分隔、有的連在一起）、核准日期民國／西元混用、工廠名稱前後有多餘空白。以前要一格一格手動修，現在交給 Codex 幾秒鐘搞定，原始檔不會被動到。',
+    examplePrompt: `請讀取 factory_registry.xlsx，幫我做以下整理：
+1. 把「工廠名稱」欄位的前後多餘空白去掉
+2. 把「電話」欄位統一格式為 0X-XXXX-XXXX
+3. 把「核准日期」欄位統一格式為 YYYY/MM/DD（民國年請轉換為西元年）
+完成後輸出為 factory_registry_cleaned.xlsx 存在同一資料夾。`,
+    exampleResponse: `✓ 已處理 factory_registry.xlsx（共 412 筆）
 
 整理結果：
-- 廠商名稱：修正 34 筆（去除前後空白）
-- 電話欄位：統一格式 238 筆
-  （04-12345678 → 04-1234-5678、0912345678 → 0912-345-678）
-- 決標日期：統一為西元格式 238 筆
-  （1140315 → 2025/03/15、114/3/15 → 2025/03/15）
+- 工廠名稱：修正 57 筆（去除前後空白）
+- 電話欄位：統一格式 412 筆
+  （0423456789 → 04-2345-6789、04 23456789 → 04-2345-6789）
+- 核准日期：統一為西元格式 412 筆
+  （1050318 → 2016/03/18、105/3/18 → 2016/03/18）
 
-✓ 已儲存為 procurement_award_cleaned.xlsx`,
-    task: '前往 tender.gov.tw → 查詢決標公告 → 搜尋關鍵字「機械」或「設備」→ 下載 Excel，放入 VS Code 資料夾，讓 Codex 幫你統一電話與日期格式後輸出新檔案。',
+✓ 已儲存為 factory_registry_cleaned.xlsx`,
+    task: '前往 data.gov.tw 搜尋「工廠登記」，篩選機械製造業相關資料集，下載 Excel 放入 VS Code 資料夾，讓 Codex 幫你統一電話與日期格式後輸出新檔案。',
     checklist: [
-      '我從 tender.gov.tw 下載了機械設備相關的決標 Excel 資料',
+      '我從 data.gov.tw 下載了工廠登記相關的 Excel 資料',
       'Codex 成功讀取 Excel 並告訴我共有幾筆資料',
       'Codex 統一了電話或日期格式並輸出 _cleaned.xlsx',
       '我打開新檔案確認格式已整理，原始檔案沒有被修改',
