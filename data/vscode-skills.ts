@@ -106,7 +106,7 @@ export const vsCodeSkills: Skill[] = [
     title: '讓 Codex 讀取多種格式的檔案內容',
     difficulty: 'beginner',
     objective: '讓 Codex Agent 讀取 Word（.docx）、PDF、或純文字（.txt）檔案，並摘要出重點。',
-    context: '公司常常有各種格式的報告和文件。以前要先打開每份文件才能知道內容，現在只要把檔案放到 VS Code 開啟的資料夾裡，直接在 Codex 對話框輸入檔名，Codex 就會幫你讀出重點。適用於 Word、PDF、TXT 等常見格式。',
+    context: '公司常常有各種格式的報告和文件，如 Word、PDF、TXT 等常見格式，以前要先打開每份文件才能知道內容，現在只要把檔案放到 VS Code 開啟的資料夾裡，直接在 Codex 對話框輸入檔名，Codex 就會幫你讀出重點。',
     examplePrompt: `（確認 report.docx 在 VS Code 開啟的資料夾中，切換到 Agent 模式，輸入：）
 
 請讀取 report.docx，
