@@ -107,12 +107,7 @@ export const vsCodeSkills: Skill[] = [
     difficulty: 'beginner',
     objective: '讓 Codex Agent 讀取 Word（.docx）、PDF、或純文字（.txt）檔案，並摘要出重點。',
     context: '公司常常有各種格式的報告和文件，如 Word、PDF、TXT 等常見格式，以前要先打開每份文件才能知道內容，現在只要把檔案放到 VS Code 開啟的資料夾裡，直接在 Codex 對話框輸入檔名，Codex 就會幫你讀出重點。',
-    examplePrompt: `（將台灣機械產業進出口速報 PDF 或 Word 檔放入 VS Code 資料夾，
-切換到 Agent 模式，輸入：）
-
-請讀取「台灣機械產業進出口速報_202604.pdf」，
-摘要這份報告的主要重點，用 3-5 個條列項目呈現，
-每個重點不超過 2 句話，並標示數據來源月份。`,
+    examplePrompt: `請讀取「台灣機械產業進出口速報_202604.pdf」，摘要這份報告的主要重點，用 3-5 個條列項目呈現，每個重點不超過 2 句話，並標示數據來源月份。`,
     exampleResponse: `✓ 已讀取「台灣機械產業進出口速報_202604.pdf」（共 8 頁）
 
 📄 2026 年 4 月進出口速報重點：
