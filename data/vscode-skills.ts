@@ -128,29 +128,29 @@ export const vsCodeSkills: Skill[] = [
     id: 5,
     title: '讓 Codex 整理 Excel 欄位格式',
     difficulty: 'intermediate',
-    objective: '讓 Codex Agent 讀取 Excel 檔案，自動清除空白、統一格式，並輸出新的整理後檔案。',
-    context: '從各部門收集來的 Excel 表格常常有格式不一致的問題：姓名前後有空格、電話格式五花八門、日期格式不統一。以前要一格一格修，現在在 Codex 對話框說清楚你要什麼格式，幾秒鐘搞定。Codex 會把整理好的資料存成新檔案，原始檔不會被動到。',
-    examplePrompt: `（確認 staff_list.xlsx 在 VS Code 資料夾中，Agent 模式輸入：）
-
-請讀取 staff_list.xlsx，幫我做以下整理：
-1. 把「姓名」欄位的前後多餘空白去掉
-2. 把「電話」欄位統一格式為 09XX-XXX-XXX
-3. 把「生日」欄位統一格式為 YYYY/MM/DD
-完成後輸出為 staff_list_cleaned.xlsx 存在同一資料夾。`,
-    exampleResponse: `✓ 已處理 staff_list.xlsx
+    objective: '從政府採購網下載機械設備決標 Excel，讓 Codex 自動清除空白、統一電話與日期格式，並輸出整理後的新檔案。',
+    context: '政府採購網（tender.gov.tw）公開所有機關採購決標資料，可直接下載 Excel。這類資料常見格式問題：廠商電話格式不一（有的有區碼、有的沒有）、決標日期民國／西元混用、廠商名稱前後有多餘空白。以前要一格一格手動修，現在交給 Codex 幾秒鐘搞定，原始檔不會被動到。',
+    examplePrompt: `請讀取 procurement_award.xlsx，幫我做以下整理：
+1. 把「廠商名稱」欄位的前後多餘空白去掉
+2. 把「電話」欄位統一格式為 0X-XXXX-XXXX 或 09XX-XXX-XXX
+3. 把「決標日期」欄位統一格式為 YYYY/MM/DD（民國年請轉換為西元年）
+完成後輸出為 procurement_award_cleaned.xlsx 存在同一資料夾。`,
+    exampleResponse: `✓ 已處理 procurement_award.xlsx（共 238 筆）
 
 整理結果：
-- 姓名欄位：修正 12 筆（去除前後空白）
-- 電話欄位：統一格式 47 筆（0912345678 → 0912-345-678）
-- 生日欄位：統一格式 50 筆
+- 廠商名稱：修正 34 筆（去除前後空白）
+- 電話欄位：統一格式 238 筆
+  （04-12345678 → 04-1234-5678、0912345678 → 0912-345-678）
+- 決標日期：統一為西元格式 238 筆
+  （1140315 → 2025/03/15、114/3/15 → 2025/03/15）
 
-✓ 已儲存為 staff_list_cleaned.xlsx`,
-    task: '準備一份有格式不一致問題的 Excel 檔（至少有一個欄位需要格式統一），讓 Codex 幫你整理並輸出新檔案。完成後打開新檔案確認格式。',
+✓ 已儲存為 procurement_award_cleaned.xlsx`,
+    task: '前往 tender.gov.tw → 查詢決標公告 → 搜尋關鍵字「機械」或「設備」→ 下載 Excel，放入 VS Code 資料夾，讓 Codex 幫你統一電話與日期格式後輸出新檔案。',
     checklist: [
-      'Codex 成功讀取我的 Excel 檔案',
-      'Codex 正確清除姓名或文字欄位的多餘空白',
-      'Codex 輸出了新的 _cleaned.xlsx 檔案',
-      '我打開新檔案確認格式已統一，原始檔案沒有被修改',
+      '我從 tender.gov.tw 下載了機械設備相關的決標 Excel 資料',
+      'Codex 成功讀取 Excel 並告訴我共有幾筆資料',
+      'Codex 統一了電話或日期格式並輸出 _cleaned.xlsx',
+      '我打開新檔案確認格式已整理，原始檔案沒有被修改',
     ],
   },
   {
