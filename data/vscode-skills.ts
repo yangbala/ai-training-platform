@@ -145,7 +145,15 @@ export const vsCodeSkills: Skill[] = [
   （1050318 → 2016/03/18、105/3/18 → 2016/03/18）
 
 ✓ 已儲存為 factory_registry_cleaned.xlsx`,
-    task: '前往 data.gov.tw 搜尋「工廠登記」，篩選機械製造業相關資料集，下載 Excel 放入 VS Code 資料夾，讓 Codex 幫你統一電話與日期格式後輸出新檔案。',
+    task: `【操作步驟】
+① 開啟瀏覽器，前往 data.gov.tw
+② 在搜尋欄輸入「工廠登記」，按 Enter
+③ 從結果中選擇含有電話、日期欄位的資料集（例如各縣市工廠登記清冊）
+④ 點擊「下載」→ 選擇 Excel（.xlsx 或 .csv）格式
+⑤ 將下載的檔案重新命名為 factory_registry.xlsx，移入 VS Code 開啟的資料夾
+⑥ 在 VS Code 切換到 Agent 模式，複製上方示範 Prompt（將檔名換成你的實際檔名）貼入對話框
+⑦ Codex 執行完成後，在同一資料夾找到 factory_registry_cleaned.xlsx
+⑧ 用 Excel 開啟新檔案，確認電話格式統一、日期已轉為西元年`,
     checklist: [
       '我從 data.gov.tw 下載了工廠登記相關的 Excel 資料',
       'Codex 成功讀取 Excel 並告訴我共有幾筆資料',
